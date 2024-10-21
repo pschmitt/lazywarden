@@ -19,11 +19,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 COPY --from=bw /bw /usr/local/bin/bw
 
-# Update the package list and install necessary dependencies: curl, unzip, libsecret, jq, Python3, pip, virtualenv, and cron
+# Update the package list and install necessary dependencies: libsecret, Python3, pip, virtualenv, and cron
 # hadolint ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      cron libsecret-1-0 \
+      cron libsecret-1-0 jq \
       build-essential python3 python3-pip python3-venv python3-dev && \
     rm -rf /var/lib/apt/lists/*
 
